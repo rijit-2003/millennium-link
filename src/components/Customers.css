@@ -1,0 +1,13 @@
+.customers-section img {
+  max-height: 80px;
+  object-fit: contain;
+  /* filter: grayscale(100%); */
+  transition: filter 0.3s ease;
+}
+
+.customers-section img:hover {
+  filter: grayscale(0%);
+}
+.container h3 {
+    color: #0d6efd
+}
