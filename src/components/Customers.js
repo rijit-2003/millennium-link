@@ -6,7 +6,7 @@ function Customers() {
         <section className="customers-section py-5 bg-white text-center">
             <div className="container">
                 <h1 style={{ color: '#0d6efd', marginBottom: '5rem' }}>
-                    Our Customers
+                    Some of our Customers
                 </h1>
 
                 <div className="row justify-content-center align-items-center">
