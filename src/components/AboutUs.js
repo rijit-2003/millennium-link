@@ -4,7 +4,7 @@ import "./AboutUs.css"; // optional for custom styling
 
 function AboutUs() {
   return (
-    <section id="about" className="about-section py-5">
+    <section id="about" className="about-section py-5" style={{ scrollMarginTop: '100px' }}>
       <div className="container text-center">
         <div className="col-md-8 mx-auto">
             {/* <img src="/hero.png"/> */}

@@ -2,7 +2,7 @@ import React from 'react'
 import "./Contact.css";
 function ContactUs() {
     return (
-        <section id="contact" className="contact-section py-5 bg-light">
+        <section id="contact" className="contact-section py-5 bg-light" style={{ scrollMarginTop: '100px' }}>
             <div className="container">
                 <h1 className="section-title mb-4 text-center">Contact Us</h1>
                 <h5 className="text-center mb-5">Not sure what's right for you? Write a message or call us and we will ensure you get the best experience.</h5>

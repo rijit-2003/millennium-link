@@ -2,7 +2,11 @@ import React from 'react'
 
 export default function Navbar() {
     return (
-       <nav className="navbar navbar-expand-lg custom-white-navbar " >
+        <nav
+            className="navbar navbar-expand-lg custom-white-navbar sticky-top"
+            style={{ backgroundColor: 'white' }}
+        >
+
 
             <div className="container-fluid">
                 {/* Logo on the left */}
@@ -10,8 +14,8 @@ export default function Navbar() {
                     <img
                         src="/logo.png"
                         alt="Millennium Link Logo"
-                        height="100"
-                        width="100"
+                        height="50"
+                        width="65"
                         className="d-inline-block align-text-top"
                     />
                 </a>

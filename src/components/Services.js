@@ -3,13 +3,13 @@ import "./Services.css";
 
 function Services() {
     return (
-        <section id="services" className="services-section py-5 bg-light text-center">
+        <section id="services" className="services-section py-5 bg-light text-center" style={{ scrollMarginTop: '100px' }}>
             <h1>Our Services</h1>
             <div className="container">
                 <div className="row justify-content-center">
 
                     <div className="col-md-4 mb-4">
-                        <div className="card h-100">
+                        <div className="card h-100 rounded-6">
                             <img src="/telephone.png" className="card-img-top" alt="..." />
                             <div className="card-body">
                                 <h5 className="card-title">EPABX & Intercom Systems</h5>
