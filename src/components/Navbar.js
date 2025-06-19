@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <nav
             className="navbar navbar-expand-lg custom-white-navbar sticky-top"
-            style={{ backgroundColor: 'white' }}
+            style={{ backgroundColor: '#0be8f6' }}
         >
 
 
@@ -12,10 +12,10 @@ export default function Navbar() {
                 {/* Logo on the left */}
                 <a className="navbar-brand ms-5" href="#">
                     <img
-                        src="/logo.png"
+                        src="/favicon.ico"
                         alt="Millennium Link Logo"
-                        height="50"
-                        width="65"
+                        height="60"
+                        width="80"
                         className="d-inline-block align-text-top"
                     />
                 </a>
@@ -33,6 +33,9 @@ export default function Navbar() {
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#about">About Us</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="#customers">Customers</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#services">Services</a>

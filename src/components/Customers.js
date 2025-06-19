@@ -3,7 +3,7 @@ import React from "react";
 
 function Customers() {
     return (
-        <section className="customers-section py-5 bg-white text-center">
+        <section id = "customers"className="customers-section py-5 bg-white text-center" style={{ scrollMarginTop: '100px' }}>
             <div className="container">
                 <h1 style={{ color: '#0d6efd', marginBottom: '5rem' }}>
                     Some of our Customers
