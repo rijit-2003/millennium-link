@@ -50,6 +50,7 @@ function Home() {
         {/* LinkedIn */}
         <div
           onClick={() => navigate('/coming-soon')}
+          className="bounce-icon"
           style={{
             ...iconBaseStyle,
             bottom: '200px',
@@ -63,6 +64,7 @@ function Home() {
         {/* Facebook */}
         <div
           onClick={() => navigate('/coming-soon')}
+          className="bounce-icon"
           style={{
             ...iconBaseStyle,
             bottom: '140px',
@@ -78,6 +80,7 @@ function Home() {
           href="https://wa.me/9830375143"
           target="_blank"
           rel="noopener noreferrer"
+          className="bounce-icon"
           style={{
             ...iconBaseStyle,
             bottom: '260px',

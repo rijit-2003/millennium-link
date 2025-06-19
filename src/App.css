@@ -43,4 +43,20 @@
   color: #444;
   margin-bottom: 80px;
 }
+.bounce-icon {
+  animation: wiggle 1.5s infinite;
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
 
