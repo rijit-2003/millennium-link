@@ -13,7 +13,7 @@ function Footer() {
         </p>
       </div>
       <div className="col-md-6 mb-3">
-        <h5>Contact Info</h5>
+        {/* <h5>Contact Info</h5> */}
         <p><i className="bi bi-envelope-fill me-2"></i>millenniumlnk@gmail.com</p>
         <p><i className="bi bi-telephone-fill me-2"></i>9830375143</p>
       </div>

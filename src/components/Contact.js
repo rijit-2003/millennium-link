@@ -28,7 +28,7 @@ function ContactUs() {
                         {/* Optional: Disable CAPTCHA */}
                         <input type="hidden" name="_captcha" value="false" />
 
-                        <button type="submit" className="btn btn-primary w-100">Send Message</button>
+                        <button type="submit" className="btn btn-info w-100">Send Message</button>
                     </form>
 
                 </div>
