@@ -1,0 +1,26 @@
+.info-banner {
+  margin-top: 40px;
+  padding: 15px;
+  background: linear-gradient(90deg, #0cc7e8, #a2dadd);
+  color: #4b2ca0;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  animation: fadeInBanner 2s ease-in-out, pulse 3s infinite;
+}
+
+.info-banner a {
+  color: #fdffff;
+  text-decoration: underline;
+}
+
+@keyframes fadeInBanner {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}

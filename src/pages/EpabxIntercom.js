@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import './ServicePages.css';
+import InfoBanner from "../components/InfoBanner";
 
 export default function EpabxIntercom() {
   return (
@@ -46,6 +47,7 @@ export default function EpabxIntercom() {
           <button className="btn" onClick={() => window.location.href='/contact'}>Get a Quote</button>
         </div>
       </div>
+      <InfoBanner />
     </div>
   );
 }

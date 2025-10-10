@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import './ServicePages.css';
+import InfoBanner from "../components/InfoBanner";
 
 export default function Cctv() {
   return (
@@ -46,6 +47,7 @@ export default function Cctv() {
           <button className="btn" onClick={() => window.location.href='/contact'}>Request Site Survey</button>
         </div>
       </div>
+      <InfoBanner />
     </div>
   );
 }

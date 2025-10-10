@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import './ServicePages.css';
+import InfoBanner from "../components/InfoBanner";
 
 export default function Biometrics() {
   return (
@@ -46,6 +47,7 @@ export default function Biometrics() {
           <button className="btn" onClick={() => window.location.href='/contact'}>Talk to Us</button>
         </div>
       </div>
+      <InfoBanner />
     </div>
   );
 }
