@@ -19,3 +19,354 @@
     margin-top: 400px;
     border-radius: 10px;
 }
+/* === Team Floating Window (overlay) === */
+.team-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1080; /* above navbar/modals */
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(255,255,255,0.08), transparent 60%),
+              radial-gradient(1000px 600px at 80% 90%, rgba(255,255,255,0.06), transparent 60%),
+              rgba(10, 15, 25, 0.55);
+  backdrop-filter: blur(10px) saturate(120%);
+  animation: overlayFade 240ms ease-out both;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.team-window {
+  position: relative;
+  width: min(1020px, 96vw);
+  max-height: min(86vh, 900px);
+  overflow: clip;
+  background: linear-gradient(180deg, rgba(20, 26, 38, 0.9), rgba(15, 20, 30, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.05);
+  color: #eef1f7;
+  animation: dialogPop 260ms cubic-bezier(.2,.9,.2,1.2) both;
+}
+
+@keyframes dialogPop {
+  from {
+    transform: translateY(10px) scale(.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.team-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 140ms ease, background 140ms ease, opacity 140ms ease;
+}
+.team-close:hover { transform: scale(1.05); background: rgba(255,255,255,0.12); }
+.team-close:active { transform: scale(.98); opacity: .9; }
+
+.team-header {
+  padding: 28px 28px 8px 28px;
+  text-align: center;
+
+  background: radial-gradient(700px 400px at 50% -10%, rgba(0, 123, 255, 0.15), transparent 60%),
+              radial-gradient(500px 300px at 80% 0%, rgba(83, 173, 255, 0.1), transparent 55%);
+}
+
+.team-title {
+  margin: 0;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.team-subtitle {
+  margin: 6px auto 2px;
+  max-width: 60ch;
+  opacity: 0.85;
+  font-size: 14.5px;
+}
+
+/* Grid of cards */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  padding: 18px 20px 12px 20px;
+  overflow-y: auto;
+  max-height: calc(min(86vh, 900px) - 170px);
+  scroll-behavior: smooth;
+}
+@media (max-width: 992px) {
+  .team-grid { grid-template-columns: repeat(8, 1fr); }
+}
+@media (max-width: 600px) {
+  .team-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* Card */
+.team-card {
+  grid-column: span 6; /* 2 per row on desktop (12/6) */
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02)),
+    rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28);
+  transform: translateY(8px);
+  opacity: 0;
+  animation: cardRise 420ms ease forwards;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+@keyframes cardRise {
+  to { transform: translateY(0); opacity: 1; }
+}
+@media (max-width: 992px) {
+  .team-card { grid-column: span 8; }
+}
+@media (max-width: 600px) {
+  .team-card {
+    grid-column: span 4;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.34);
+}
+
+/* Avatar */
+.team-avatar {
+  width: 108px;
+  height: 108px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6ea8fe, #53dba4);
+  filter: saturate(105%);
+}
+.team-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Text */
+.team-info { min-width: 0; }
+.team-name {
+  margin: 0 0 2px 0;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.team-role {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+  opacity: 0.85;
+}
+.team-blurb {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  opacity: 0.95;
+}
+
+/* Footer actions */
+.team-footer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px 20px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Button polish (optional) */
+.know-more-btn {
+  padding: 10px 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  letter-spacing: 0.2px;
+  box-shadow: 0 8px 18px rgba(0, 85, 255, 0.18);
+  transition: transform 140ms ease, box-shadow 140ms ease, filter 140ms ease;
+}
+.know-more-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(0, 85, 255, 0.26);
+  filter: brightness(1.03);
+}
+
+/* Improve native scrollbar inside grid (WebKit) */
+.team-grid::-webkit-scrollbar { height: 10px; width: 10px; }
+.team-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.04); border-radius: 20px; }
+.team-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 20px; }
+.team-grid::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.26); }
+/* --- Side-by-side CTA buttons --- */
+.cta-row .btn {
+  min-width: 240px;
+}
+@media (max-width: 576px) {
+  .cta-row .btn {
+    width: 100%;
+  }
+}
+
+/* Reuse overlay/window styles for both Team and Vision */
+.team-overlay,
+.vision-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1080;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(255,255,255,0.08), transparent 60%),
+              radial-gradient(1000px 600px at 80% 90%, rgba(255,255,255,0.06), transparent 60%),
+              rgba(10, 15, 25, 0.55);
+  backdrop-filter: blur(10px) saturate(120%);
+  animation: overlayFade 240ms ease-out both;
+}
+
+.team-window,
+.vision-window {
+  position: relative;
+  width: min(1020px, 96vw);
+  max-height: min(86vh, 900px);
+  overflow: clip;
+
+  /* NEW lighter background */
+  background: linear-gradient(180deg, rgba(240, 247, 255, 0.96), rgba(225, 238, 255, 0.95));
+  border: 1px solid rgba(0, 102, 255, 0.15);
+  border-radius: 20px;
+
+  /* Softer shadow, more airy */
+  box-shadow: 0 20px 50px rgba(0, 50, 150, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+
+  color: #1a2a4a; /* dark blue text */
+  animation: dialogPop 260ms cubic-bezier(.2,.9,.2,1.2) both;
+}
+
+
+/* Existing team styles you already added will continue to work for .team-* classes */
+
+/* Vision-specific layout */
+.vision-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 18px;
+  padding: 18px 20px 12px 20px;
+  max-height: calc(min(86vh, 900px) - 170px);
+  overflow-y: auto;
+}
+@media (max-width: 768px) {
+  .vision-body { grid-template-columns: 1fr; text-align: center; }
+}
+.vision-hero {
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #6ea8fe, #53dba4);
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.vision-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.vision-text { min-width: 0; }
+.vision-name {
+  margin: 0 0 4px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.vision-years {
+  margin: 0 0 10px;
+  opacity: 0.85;
+  font-size: 14px;
+}
+.vision-paragraph {
+  margin: 0 0 10px;
+  font-size: 14px;
+  line-height: 1.55;
+}
+.vision-pillars {
+  margin: 0 0 12px 1.1rem;
+  font-size: 14px;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .vision-pillars { margin-left: 0; text-align: left; display: inline-block; }
+}
+
+/* Button polish parity */
+.founder-btn {
+  font-weight: 600;
+  border-radius: 10px;
+  letter-spacing: 0.2px;
+  padding: 10px 16px;
+}
+/* Company Highlight Section */
+.company-highlight {
+  background: linear-gradient(135deg, #f5faff, #eaf3ff);
+  border: 1px solid rgba(0, 102, 255, 0.1);
+  border-radius: 14px;
+  padding: 28px;
+  margin-top: 48px;
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.08);
+  text-align: center;
+}
+
+.company-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #004080;
+  margin-bottom: 14px;
+}
+
+.company-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #1a2a4a;
+  margin-bottom: 12px;
+}
+.company-highlight {
+  max-width: 800px; /* keeps text narrower */
+  margin: 48px auto 60px auto; /* more breathing room before Founder section */
+  line-height: 1.75; /* improves readability */
+}
+
+.company-highlight p + p {
+  margin-top: 14px; /* spacing between paragraphs */
+}
+.vision-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+}

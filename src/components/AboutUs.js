@@ -1,30 +1,121 @@
 // src/components/AboutUs.jsx
-import React from "react";
-import "./AboutUs.css"; // optional for custom styling
+import React, { useEffect, useRef, useState } from "react";
+import "./AboutUs.css";
 
 function AboutUs() {
+  const [visionOpen, setVisionOpen] = useState(false);
+  const visionDialogRef = useRef(null);
+
+  // Close on Esc
+  useEffect(() => {
+    const onKey = (e) => e.key === "Escape" && setVisionOpen(false);
+    if (visionOpen) document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [visionOpen]);
+
+  // Focus modal on open
+  useEffect(() => {
+    if (visionOpen && visionDialogRef.current) visionDialogRef.current.focus();
+  }, [visionOpen]);
+
   return (
-    <section id="about" className="about-section py-5" style={{ scrollMarginTop: '100px' }}>
+    <section id="about" className="about-section py-5" style={{ scrollMarginTop: "100px" }}>
       <div className="container text-center">
         <div className="col-md-8 mx-auto">
-            {/* <img src="/hero.png"/> */}
           <h1>About Us</h1>
-          <p className="fs-5">
-  Millennium Link was founded in the year 2000 by <strong>Mr. Broja Madhab Banerjee</strong>, a seasoned expert with over a decade of experience in voice communication and office automation. His vision and leadership laid the groundwork for a company built on precision, professionalism, and long-lasting customer relationships.
-</p>
-<p className="fs-5">
-  Over the past two decades, we’ve become a trusted provider of telecom and security solutions. From intercom and EPABX systems to CCTV cameras, biometric devices, and telephone installations, our services are tailored to meet the unique needs of homes, businesses, and institutions. A consistently high repeat customer rate reflects the satisfaction and confidence our clients place in us.
-</p>
-<p className="fs-5">At Millennium Link, we take pride in being a registered <strong>MSME</strong> (Micro, Small, and Medium Enterprise) under the Government of India. This recognition not only reflects our commitment to quality and growth but also empowers us to deliver innovative and affordable technology solutions to our clients. As an MSME, we are eligible for various government-backed benefits, which help us stay competitive and continuously improve our offerings. Whether it’s telecommunications, surveillance, or biometric systems, we bring the same passion and precision to every project — with the agility and dedication that define successful MSMEs.
+          {/* Company Credentials & Expertise Section */}
+          <div className="company-highlight mt-5">
+            <h3 className="company-title">Our Expertise & Achievements</h3>
+            <p className="company-text">
+              Millennium Link is a registered <strong>MSME (Micro, Small, and Medium Enterprise)</strong>
+              under the Government of India and holds all the necessary trade licenses to operate in telecom,
+              security, and automation domains. Our compliance with industry standards ensures that every
+              project we deliver is backed by professionalism, accountability, and reliability.
+            </p>
+            <p className="company-text">
+              With over two decades of experience, we’ve successfully implemented solutions across
+              <strong> residential complexes, businesses, and institutions</strong>. Our expertise spans
+              <strong> intercom systems, EPABX, CCTV surveillance, biometric access control,</strong> and
+              <strong> telephone infrastructure</strong>. Numerous repeat customers and long-standing
+              partnerships testify to our reputation for quality, innovation, and customer-first service.
+            </p>
+          </div>
 
-</p>
-
-          
+          {/* Founder’s Vision Highlight Box (stays below About text) */}
+          <div className="founder-highlight mt-5">
+            <h3 className="founder-title">Our Founder’s Vision</h3>
+            <p className="founder-quote">
+              .
+              .
+              .
+            </p>
+            <button
+              type="button"
+              className="btn btn-info founder-btn"
+              onClick={() => setVisionOpen(true)}
+              aria-haspopup="dialog"
+              aria-expanded={visionOpen ? "true" : "false"}
+              aria-controls="vision-dialog"
+            >
+              Read More
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* FOUNDER'S VISION WINDOW */}
+      {visionOpen && (
+        <div
+          className="vision-overlay"
+          role="dialog"
+          id="vision-dialog"
+          aria-modal="true"
+          aria-label="Founder’s Vision"
+          onClick={() => setVisionOpen(false)}
+        >
+          <div
+            className="vision-window"
+            ref={visionDialogRef}
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button className="team-close" aria-label="Close vision window" onClick={() => setVisionOpen(false)}>
+              ×
+            </button>
+
+            <div className="team-header">
+              <h2 className="team-title">Our Founder’s Vision</h2>
+              <p className="team-subtitle">
+                Carrying forward the principles of precision, professionalism, and long-term trust.
+              </p>
+            </div>
+
+            <div className="vision-body">
+
+              <div className="vision-text">
+                <h3 className="vision-name">Mr. Broja Madhab Banerjee</h3>
+                <p className="vision-years">Founder • Established 2000</p>
+                <p className="vision-paragraph">
+                  We deliver reliable telecom and security solutions that actually work in the
+                  field — from clean EPABX installations and intercom networks to robust CCTV systems and biometric
+                  access setups. Every project was built to last, with practical designs, neat wiring, and timely
+                  support, values we continue to follow today.
+                </p>
+              </div>
+
+
+            </div>
+
+            <div className="team-footer">
+              <button className="btn btn-outline-light" onClick={() => setVisionOpen(false)}>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
-
 
 export default AboutUs;
