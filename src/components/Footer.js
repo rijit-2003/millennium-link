@@ -1,28 +1,40 @@
 import React from "react";
+import './Footer.css'; // 👈 import the CSS
 
 function Footer() {
   return (
-    <footer className="footer mt-5 py-4 text-dark" style={{ backgroundColor: '#0be8f6' }}>
-  <div className="container text-center">
-    <div className="row justify-content-center">
-      <div className="col-md-6 mb-3">
-        <p><strong>Regd. Address:</strong><br />
-          A/P 4/C 1 CIT SCHEME CXLIII<br />
-          SANKAR BOSE ROAD, CHETLA,<br />
-          KOLKATA: 700 027
+    <footer className="footer py-5">
+      <div className="container text-center">
+        <div className="row justify-content-center">
+          {/* Address */}
+          <div className="col-md-6 mb-3">
+            <p>
+              <strong>Regd. Address:</strong><br />
+              A/P 4/C 1 CIT SCHEME CXLIII<br />
+              SANKAR BOSE ROAD, CHETLA,<br />
+              KOLKATA: 700 027
+            </p>
+          </div>
+
+          {/* Contact */}
+          <div className="col-md-6 mb-3 contact-info">
+            <p>
+              <i className="bi bi-envelope-fill"></i>
+              <a href="mailto:millenniumlnk@gmail.com">millenniumlnk@gmail.com</a>
+            </p>
+            <p>
+              <i className="bi bi-telephone-fill"></i>
+              <a href="tel:+919830375143">9830375143</a>
+            </p>
+          </div>
+        </div>
+
+        <hr />
+        <p className="copyright mb-0">
+          &copy; {new Date().getFullYear()} Millennium Link. All rights reserved.
         </p>
       </div>
-      <div className="col-md-6 mb-3">
-        {/* <h5>Contact Info</h5> */}
-        <p><i className="bi bi-envelope-fill me-2"></i>millenniumlnk@gmail.com</p>
-        <p><i className="bi bi-telephone-fill me-2"></i>9830375143</p>
-      </div>
-    </div>
-    <hr className="border-dark" />
-    <p className="mb-0">&copy; {new Date().getFullYear()} Millennium Link. All rights reserved.</p>
-  </div>
-</footer>
-
+    </footer>
   );
 }
 

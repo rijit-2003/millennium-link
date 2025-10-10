@@ -1,8 +1,10 @@
+// src/components/Services.js
 import React from "react";
 import "./Services.css";
 import { FaPhoneAlt } from 'react-icons/fa';
 import { GiCctvCamera } from 'react-icons/gi';
 import { BsFingerprint } from 'react-icons/bs';
+import { Link } from "react-router-dom";
 
 function Services() {
   return (
@@ -22,9 +24,9 @@ function Services() {
                 <p className="card-text">
                   We specialize in Intercom and EPABX systems, providing reliable communication solutions for large institutions such as banks, schools, and corporate offices.
                 </p>
-                <a href="/sl2100.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-info">
-                  View Brochure
-                </a>
+                <Link to="/services/epabx" className="btn btn-info">
+                  Learn More
+                </Link>
               </div>
             </div>
           </div>
@@ -40,9 +42,9 @@ function Services() {
                 <p className="card-text">
                   We offer advanced CCTV surveillance solutions designed to enhance security for residential complexes, commercial spaces, and institutional campuses.
                 </p>
-                <a href="/cameracatalogue.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-info">
-                  View Catalogue
-                </a>
+                <Link to="/services/cctv" className="btn btn-info">
+                  Learn More
+                </Link>
               </div>
             </div>
           </div>
@@ -58,9 +60,9 @@ function Services() {
                 <p className="card-text">
                   Our biometric access control systems ensure secure, hassle-free authentication, ideal for offices, educational institutions, and high-security environments.
                 </p>
-                <a href="/essl.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-info">
-                  View Catalogue
-                </a>
+                <Link to="/services/biometric" className="btn btn-info">
+                  Learn More
+                </Link>
               </div>
             </div>
           </div>
