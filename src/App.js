@@ -47,19 +47,19 @@ function Home() {
           />
         </h2>
 
-        {/* LinkedIn */}
         <div
-          onClick={() => navigate('/coming-soon')}
-          className="bounce-icon"
-          style={{
-            ...iconBaseStyle,
-            bottom: '200px',
-            backgroundColor: '#0077b5'
-          }}
-          title="Connect on LinkedIn"
-        >
-          <FaLinkedin size={26} />
-        </div>
+  onClick={() => window.open("https://www.linkedin.com/company/millennium-link/", "_blank")}
+  className="bounce-icon"
+  style={{
+    ...iconBaseStyle,
+    bottom: '200px',
+    backgroundColor: '#0077b5'
+  }}
+  title="Connect on LinkedIn"
+>
+  <FaLinkedin size={26} />
+</div>
+
 
         {/* Facebook */}
         <div
