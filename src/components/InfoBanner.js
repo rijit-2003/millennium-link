@@ -6,7 +6,7 @@ export default function InfoBanner() {
   return (
     <div className="info-banner">
       <p>
-        To know more about the product categories, visit-----{"    "}
+        To know more about the product categories, visit -----{"    "}
         <a
           href="https://www.millenniumlink.info"
           target="_blank"

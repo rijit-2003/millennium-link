@@ -94,17 +94,27 @@ function ContactUs() {
         </div>
       </div>
       <div className="d-flex justify-content-center mb-4 gap-3 flex-wrap mt-5">
-          <button
-            type="button"
-            className="btn btn-info meet-team-btn"
-            onClick={() => setTeamOpen(true)}
-            aria-haspopup="dialog"
-            aria-expanded={teamOpen ? "true" : "false"}
-            aria-controls="contact-team-dialog"
-          >
-            Meet our team
-          </button>
-        </div>
+  <button
+    type="button"
+    className="btn btn-info meet-team-btn"
+    onClick={() => setTeamOpen(true)}
+    aria-haspopup="dialog"
+    aria-expanded={teamOpen ? "true" : "false"}
+    aria-controls="contact-team-dialog"
+  >
+    Meet our team
+  </button>
+
+  <a
+    href="https://g.page/r/Cb5Nmau1DpUxEAE/review"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn btn-info meet-team-btn"
+  >
+    Leave us a review
+  </a>
+</div>
+
       {/* Light themed floating Team Window */}
       {teamOpen && (
         <div
