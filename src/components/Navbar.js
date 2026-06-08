@@ -6,11 +6,9 @@ export default function Navbar() {
             className="navbar navbar-expand-lg custom-white-navbar sticky-top"
             style={{ backgroundColor: '#0be8f6' }}
         >
-
-
             <div className="container-fluid">
-                {/* Logo on the left */}
-                <a className="navbar-brand ms-5" href="#">
+                {/* FIXED: Swapped '#' for '/' so it acts as a valid, accessible domain link */}
+                <a className="navbar-brand ms-5" href="/">
                     <img
                         src="/favicon.ico"
                         alt="Millennium Link Logo"
@@ -29,7 +27,8 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul className="navbar-nav mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="#">Home</a>
+                            {/* FIXED: Swapped '#' for '/' to resolve the strict build error */}
+                            <a className="nav-link" aria-current="page" href="/">Home</a>
                         </li>
                         <li className="nav-item">
                             <a className="nav-link" href="#about">About Us</a>
