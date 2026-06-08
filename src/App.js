@@ -12,7 +12,7 @@ import Customers from "./components/Customers";
 import Partners from "./components/Partners";
 import Contact from "./components/Contact";
 import StatsCounter from './components/StatsCounter';
-
+import Testimonials from "./components/Testimonials";
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import ContactUs from './pages/ContactUs';
@@ -22,6 +22,7 @@ import Cctv from './pages/Cctv';
 import Biometrics from './pages/Biometrics';
 
 import { FaWhatsapp, FaLinkedin, FaFacebook } from 'react-icons/fa';
+import TrustStrip from './components/TrustStrip';
 
 const iconBaseStyle = {
   position: 'fixed',
@@ -36,12 +37,12 @@ const iconBaseStyle = {
   cursor: 'pointer',
 };
 
-// 👇 New helper component
+// Scroll helper
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0); // always scroll to top on route change
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
@@ -53,73 +54,68 @@ function Home() {
 
   return (
     <>
-      <div className="text-center mt-5">
-        <h1 className="hero-title">Millennium Link</h1>
-        <h2 className="hero-subtitle">
-          <Typewriter
-            words={['A Biometrics, CCTV and Telecom Solution Company']}
-            loop={1}
-            cursor
-            cursorStyle="|"
-            typeSpeed={70}
-            deleteSpeed={50}
-            delaySpeed={1000}
-          />
-        </h2>
+      {/* HERO */}
+      <div className="hero-row mt-5">
 
-        {/* LinkedIn */}
-        <div
-          onClick={() => window.open("https://www.linkedin.com/company/millennium-link/", "_blank")}
-          className="bounce-icon"
-          style={{
-            ...iconBaseStyle,
-            bottom: '200px',
-            backgroundColor: '#0077b5'
-          }}
-          title="Connect on LinkedIn"
-        >
-          <FaLinkedin size={26} />
+        <div className="hero-text text-center">
+          <h1 className="hero-title">Millennium Link</h1>
+
+          <h2 className="hero-subtitle">
+            <Typewriter
+              words={['A Biometrics, CCTV and Telecom Solution Company']}
+              loop={1}
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={50}
+              delaySpeed={1000}
+            />
+          </h2>
         </div>
 
-        {/* Facebook */}
-        <div
-          onClick={() => navigate('/coming-soon')}
-          className="bounce-icon"
-          style={{
-            ...iconBaseStyle,
-            bottom: '140px',
-            backgroundColor: '#1877f2'
-          }}
-          title="Visit us on Facebook"
-        >
-          <FaFacebook size={26} />
-        </div>
-
-        {/* WhatsApp */}
-        <a
-          href="https://wa.me/9830375143"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="bounce-icon"
-          style={{
-            ...iconBaseStyle,
-            bottom: '260px',
-            backgroundColor: '#25D366'
-          }}
-          title="Chat with us on WhatsApp"
-        >
-          <FaWhatsapp size={26} />
-        </a>
       </div>
+
+      {/* LinkedIn */}
+      <div
+        onClick={() => window.open("https://www.linkedin.com/company/millennium-link/", "_blank")}
+        className="bounce-icon"
+        style={{ ...iconBaseStyle, bottom: '200px', backgroundColor: '#0077b5' }}
+        title="Connect on LinkedIn"
+      >
+        <FaLinkedin size={26} />
+      </div>
+
+      {/* Facebook */}
+      <div
+        onClick={() => navigate('/coming-soon')}
+        className="bounce-icon"
+        style={{ ...iconBaseStyle, bottom: '140px', backgroundColor: '#1877f2' }}
+        title="Visit us on Facebook"
+      >
+        <FaFacebook size={26} />
+      </div>
+
+      {/* WhatsApp */}
+      <a
+        href="https://wa.me/9830375143"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bounce-icon"
+        style={{ ...iconBaseStyle, bottom: '260px', backgroundColor: '#25D366' }}
+        title="Chat with us on WhatsApp"
+      >
+        <FaWhatsapp size={26} />
+      </a>
 
       <StatsCounter />
       <AboutUs />
       <Customers />
+      {/* <Testimonials /> */}
       <Services />
       <Partners />
       <Contact />
 
-      {/* Floating CTA – Home page only */}
+      {/* Floating CTA */}
       <button
         aria-label="Book Now"
         onClick={() => navigate('/contact')}
@@ -155,7 +151,6 @@ function Layout({ children }) {
   const location = useLocation();
   const { pathname } = location;
 
-  // Pages where Navbar should be hidden
   const hideNavbarOn = [
     '/services/epabx',
     '/services/cctv',
@@ -176,24 +171,16 @@ function Layout({ children }) {
 function App() {
   return (
     <Router>
-      <ScrollToTop /> {/* 👈 ensures scroll resets on route change */}
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-
-          {/* Services index (shows navbar) */}
           <Route path="/services" element={<Services />} />
-
-          {/* Individual service pages (hide navbar, keep footer) */}
           <Route path="/services/epabx" element={<EpabxIntercom />} />
           <Route path="/services/cctv" element={<Cctv />} />
           <Route path="/services/biometric" element={<Biometrics />} />
-
-          {/* Contact and other pages */}
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/coming-soon" element={<SocialComingSoon />} />
-
-          {/* fallback */}
           <Route path="*" element={<Home />} />
         </Routes>
       </Layout>

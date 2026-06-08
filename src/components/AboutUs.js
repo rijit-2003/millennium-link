@@ -1,119 +1,84 @@
-// src/components/AboutUs.jsx
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import "./AboutUs.css";
 
 function AboutUs() {
-  const [visionOpen, setVisionOpen] = useState(false);
-  const visionDialogRef = useRef(null);
+  const values = [
+    "Clean Engineering", "Zero-Downtime Infra",
+    "Brand Partnerships", "Active SLA Support"
+  ];
 
-  // Close on Esc
-  useEffect(() => {
-    const onKey = (e) => e.key === "Escape" && setVisionOpen(false);
-    if (visionOpen) document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [visionOpen]);
-
-  // Focus modal on open
-  useEffect(() => {
-    if (visionOpen && visionDialogRef.current) visionDialogRef.current.focus();
-  }, [visionOpen]);
+  const verticals = [
+    { icon: "🏦", title: "Banking & Financial", desc: "Secure vaults, server surveillance, multi-point biometric authentication." },
+    { icon: "🏫", title: "Educational Institutions", desc: "Campus-wide intercom networks, perimeter monitoring, student-safety tracking." },
+    { icon: "🏢", title: "Corporate & Real Estate", desc: "High-capacity commercial PBX infrastructure and residential access setups." },
+  ];
 
   return (
-    <section id="about" className="about-section py-5" style={{ scrollMarginTop: "100px" }}>
-      <div className="container text-center">
-        <div className="col-md-8 mx-auto">
-          <h1>About Us</h1>
-          {/* Company Credentials & Expertise Section */}
-          <div className="company-highlight mt-5">
-            <h3 className="company-title">Our Expertise & Achievements</h3>
-            <p className="company-text">
-              Millennium Link is a registered <strong>MSME (Micro, Small, and Medium Enterprise)</strong>
-              under the Government of India and holds all the necessary trade licenses to operate in telecom,
-              security, and automation domains. Our compliance with industry standards ensures that every
-              project we deliver is backed by professionalism, accountability, and reliability.
-            </p>
-            <p className="company-text">
-              With over two decades of experience, we’ve successfully implemented solutions across
-              <strong> residential complexes, businesses, and institutions</strong>. Our expertise spans
-              <strong> intercom systems, EPABX, CCTV surveillance, biometric access control,</strong> and
-              <strong> telephone infrastructure</strong>. Numerous repeat customers and long-standing
-              partnerships testify to our reputation for quality, innovation, and customer-first service.
-            </p>
-          </div>
+    <section id="about" className="ab-section" style={{ scrollMarginTop: "100px" }}>
+      <div className="ab-wrap">
 
-          {/* Founder’s Vision Highlight Box (stays below About text) */}
-          <div className="founder-highlight mt-5">
-            <h3 className="founder-title">Our Founder’s Vision</h3>
-            <p className="founder-quote">
-              .
-              .
-              .
-            </p>
-            <button
-              type="button"
-              className="btn btn-info founder-btn"
-              onClick={() => setVisionOpen(true)}
-              aria-haspopup="dialog"
-              aria-expanded={visionOpen ? "true" : "false"}
-              aria-controls="vision-dialog"
-            >
-              Read More
-            </button>
+        {/* Header */}
+        <div className="ab-header">
+          <div>
+            <div className="ab-eyebrow">Since 2000 · Kolkata, West Bengal</div>
+            <h1 className="ab-title">About<br /><span>Millennium</span> Link</h1>
+          </div>
+          <p className="ab-desc">
+            We design, deploy, and maintain <strong>engineering-grade communication and surveillance</strong> network architectures for high-traffic environments across West Bengal.
+          </p>
+        </div>
+
+        {/* Trust Badges */}
+        <div className="ab-badges">
+          <div className="ab-badge">
+            <span className="ab-badge-icon">🛡️</span>
+            <h5>Government Registered</h5>
+            <p>Officially recognized vendor with full statutory compliance.</p>
+            <div className="ab-badge-tag">UDYAM-WB-10-0196820</div>
+            <div className="ab-badge-tag">GSTIN: 19FNAPB6459N1ZH</div>
+          </div>
+          <div className="ab-badge">
+            <span className="ab-badge-icon">🏛️</span>
+            <h5>GeM Registered</h5>
+            <p>Onboarded on the Government e-Marketplace for seamless public sector procurement.</p>
+          </div>
+          <div className="ab-badge">
+            <span className="ab-badge-icon">📍</span>
+            <h5>Pan-Bengal Presence</h5>
+            <p>Headquartered in Kolkata with a dedicated post-sales support engineer network statewide.</p>
           </div>
         </div>
-      </div>
 
-      {/* FOUNDER'S VISION WINDOW */}
-      {visionOpen && (
-        <div
-          className="vision-overlay"
-          role="dialog"
-          id="vision-dialog"
-          aria-modal="true"
-          aria-label="Founder’s Vision"
-          onClick={() => setVisionOpen(false)}
-        >
-          <div
-            className="vision-window"
-            ref={visionDialogRef}
-            tabIndex={-1}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button className="team-close" aria-label="Close vision window" onClick={() => setVisionOpen(false)}>
-              ×
-            </button>
-
-            <div className="team-header">
-              <h2 className="team-title">Our Founder’s Vision</h2>
-              <p className="team-subtitle">
-                Carrying forward the principles of precision, professionalism, and long-term trust.
-              </p>
+        {/* Profile + Verticals */}
+        <div className="ab-bottom">
+          <div className="ab-profile">
+            <h2>Who We Are</h2>
+            <p className="ab-lead">Turnkey project executions spanning complex EPABX arrays, corporate CCTV structures, biometric security, and telephone line infrastructures.</p>
+            <p className="ab-body">With over 25 years of field experience, our team delivers end-to-end solutions — from initial site survey to commissioning and active SLA maintenance.</p>
+            <div className="ab-values">
+              {values.map(v => (
+                <div className="ab-value" key={v}>
+                  <span className="ab-value-dot"></span>{v}
+                </div>
+              ))}
             </div>
+          </div>
 
-            <div className="vision-body">
-
-              <div className="vision-text">
-                <h3 className="vision-name">Mr. Broja Madhab Banerjee</h3>
-                <p className="vision-years">Founder • Established 2000</p>
-                <p className="vision-paragraph">
-                  We deliver reliable telecom and security solutions that actually work in the
-                  field — from clean EPABX installations and intercom networks to robust CCTV systems and biometric
-                  access setups. Every project was built to last, with practical designs, neat wiring, and timely
-                  support, values we continue to follow today.
-                </p>
+          <div className="ab-verticals">
+            <h4>Vertical Solutions</h4>
+            {verticals.map(v => (
+              <div className="ab-vertical" key={v.title}>
+                <div className="ab-vert-icon">{v.icon}</div>
+                <div className="ab-vert-text">
+                  <h6>{v.title}</h6>
+                  <p>{v.desc}</p>
+                </div>
               </div>
-
-
-            </div>
-
-            <div className="team-footer">
-              <button className="btn btn-outline-light" onClick={() => setVisionOpen(false)}>
-                Close
-              </button>
-            </div>
+            ))}
           </div>
         </div>
-      )}
+
+      </div>
     </section>
   );
 }

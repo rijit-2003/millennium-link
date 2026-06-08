@@ -24,7 +24,9 @@ function Footer() {
             </p>
             <p>
               <i className="bi bi-telephone-fill"></i>
-              <a href="tel:+919830375143">9830375143</a>
+              <a href="tel:+919830375143">9830375143 : : </a>
+              <i className="bi bi-telephone-fill"></i>
+              <a href="tel:+919830375143">9674818803</a>
             </p>
           </div>
         </div>
