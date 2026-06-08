@@ -12,8 +12,11 @@ import Customers from "./components/Customers";
 import Partners from "./components/Partners";
 import Contact from "./components/Contact";
 import StatsCounter from './components/StatsCounter';
-import Testimonials from "./components/Testimonials";
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+
+// CLEANUP: Commented out unused imports so strict production builds don't fail
+// import Testimonials from "./components/Testimonials";
+// import TrustStrip from './components/TrustStrip';
 
 import ContactUs from './pages/ContactUs';
 import SocialComingSoon from './pages/SocialComingSoon';
@@ -22,7 +25,6 @@ import Cctv from './pages/Cctv';
 import Biometrics from './pages/Biometrics';
 
 import { FaWhatsapp, FaLinkedin, FaFacebook } from 'react-icons/fa';
-import TrustStrip from './components/TrustStrip';
 
 const iconBaseStyle = {
   position: 'fixed',
@@ -56,10 +58,8 @@ function Home() {
     <>
       {/* HERO */}
       <div className="hero-row mt-5">
-
         <div className="hero-text text-center">
           <h1 className="hero-title">Millennium Link</h1>
-
           <h2 className="hero-subtitle">
             <Typewriter
               words={['A Biometrics, CCTV and Telecom Solution Company']}
@@ -72,7 +72,6 @@ function Home() {
             />
           </h2>
         </div>
-
       </div>
 
       {/* LinkedIn */}
@@ -110,7 +109,6 @@ function Home() {
       <StatsCounter />
       <AboutUs />
       <Customers />
-      {/* <Testimonials /> */}
       <Services />
       <Partners />
       <Contact />
