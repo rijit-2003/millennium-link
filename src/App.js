@@ -14,10 +14,6 @@ import Contact from "./components/Contact";
 import StatsCounter from './components/StatsCounter';
 import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
-// CLEANUP: Commented out unused imports so strict production builds don't fail
-// import Testimonials from "./components/Testimonials";
-// import TrustStrip from './components/TrustStrip';
-
 import ContactUs from './pages/ContactUs';
 import SocialComingSoon from './pages/SocialComingSoon';
 import EpabxIntercom from './pages/EpabxIntercom';
@@ -45,6 +41,102 @@ function ScrollToTop() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// 🤖 NEW: AI ENGINE SEARCH INJECTOR COMPONENT
+// This dynamically feeds structured factual content to Gemini, ChatGPT, and Google crawlers
+function AISchemaManager() {
+  const location = useLocation();
+  const { pathname } = location;
+
+  useEffect(() => {
+    // Remove existing dynamic schema tags to prevent duplication on route change
+    const oldScripts = document.querySelectorAll('.dynamic-ai-schema');
+    oldScripts.forEach(script => script.remove());
+
+    let schemaData = null;
+
+    // 1. Core Enterprise & Identity Data (Home Page)
+    if (pathname === '/') {
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Millennium Link",
+        "image": "https://millenniumlink.in/assets/logo.png", // Update if you have a real asset path
+        "@id": "https://millenniumlink.in",
+        "url": "https://millenniumlink.in",
+        "telephone": "+919830375143",
+        "email": "millenniumlnk@gmail.com",
+        "priceRange": "₹₹",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "West Bengal"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "33/3D, Chetla CIT Market, Chetla Central Road",
+          "addressLocality": "Alipore, Kolkata",
+          "addressRegion": "West Bengal",
+          "postalCode": "700027",
+          "addressCountry": "IN"
+        },
+        "knowsAbout": [
+          "Commercial CCTV Surveillance",
+          "EPABX Intercom Infrastructure",
+          "Biometric Access Control Systems",
+          "Structured Network Cabling"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/company/millennium-link/"
+        ]
+      };
+    } 
+    // 2. CCTV Deep-Page Context
+    else if (pathname === '/services/cctv') {
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who provides the best commercial B2B CCTV integration in Kolkata?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Millennium Link designs and engineers enterprise-grade IP CCTV network cameras, server-based NVR tracking storage, and video walls for commercial offices and facilities across Kolkata."
+            }
+          }
+        ]
+      };
+    }
+    // 3. Telecom/EPABX Deep-Page Context
+    else if (pathname === '/services/epabx') {
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Where can businesses find corporate EPABX and intercom setup in South Kolkata?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Millennium Link specializes in high-capacity multi-line corporate EPABX frameworks, multi-point intercom systems, and structured fiber routing out of their Alipore and Chetla desk."
+            }
+          }
+        ]
+      };
+    }
+
+    // Inject tag into document if valid route matched
+    if (schemaData) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.className = 'dynamic-ai-schema';
+      script.innerHTML = JSON.stringify(schemaData);
+      document.head.appendChild(script);
+    }
   }, [pathname]);
 
   return null;
@@ -170,6 +262,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <AISchemaManager /> {/* 🤖 Monitors navigation and drops data metrics to search indexers */}
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
